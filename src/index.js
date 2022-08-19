@@ -18,6 +18,16 @@ const Main = () => {
     }
   }
 
+  async function fetchData(dataUrl) {
+    try {
+      fetch(apiUrl + dataUrl)
+        .then((response) => response.json())
+        .then((value) => console.log(value));
+    } catch (err) {
+      console.log(err.message);
+    }
+  }
+
   useEffect(() => {
     getClasses();
   }, []);
@@ -26,7 +36,7 @@ const Main = () => {
     <div id='main'>
       <Navbar />
       <div id='container'>
-        <ClassTable classes={classes} />
+        <ClassTable classes={classes} fetchData={fetchData} />
       </div>
     </div>
   );

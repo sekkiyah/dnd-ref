@@ -1,7 +1,7 @@
 import React from 'react';
 
 const ClassTable = (props) => {
-  const { classes } = props;
+  const { classes, fetchData } = props;
   return (
     <table>
       <tbody>
@@ -10,7 +10,10 @@ const ClassTable = (props) => {
         </tr>
         {props.classes.map((classes) => {
           return (
-            <tr key={classes.index} onClick={() => console.log(classes.url)}>
+            <tr
+              key={classes.index}
+              onClick={() => console.log(fetchData(classes.url))}
+            >
               <th>{classes.name}</th>
             </tr>
           );
